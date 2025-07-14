@@ -1,7 +1,6 @@
 "use client";
 
 import CreateOrganization from "@/components/create-organization";
-import CreateOrganizationSetting from "@/components/create-setting";
 import PageHeader from "@/components/page-header";
 import TabPanel from "@/components/tab-panel";
 import { useGetDefaultOrganizationQuery } from "@/state/api/organizationApi";
@@ -186,14 +185,6 @@ const CreateOrganizationModal = ({
     handleClose();
   };
 
-  const handleCreateOrganizationSetting = (
-    createdSetting: OrganizationSetting
-  ) => {
-    console.log("Created Organization Setting:", createdSetting);
-
-    handleClose();
-  };
-
   return (
     <Dialog
       open={isOpen}
@@ -228,10 +219,6 @@ const CreateOrganizationModal = ({
           {organization && (
             <TabPanel value={tabIndex} index={1}>
               <Typography>{organization.name || ""}</Typography>
-              <CreateOrganizationSetting
-                organization={organization?.id || ""}
-                onCreate={handleCreateOrganizationSetting}
-              />
             </TabPanel>
           )}
         </Box>
